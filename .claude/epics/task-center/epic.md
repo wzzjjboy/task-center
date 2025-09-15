@@ -2,10 +2,10 @@
 name: task-center
 status: backlog
 created: 2025-09-15T01:19:29Z
-updated: 2025-09-15T03:30:44Z
-progress: 0%
+updated: 2025-09-15T05:01:53Z
+progress: 8%
 prd: .claude/prds/task-center.md
-github: [Will be updated when synced to GitHub]
+github: https://github.com/wzzjjboy/task-center/issues/1
 ---
 
 # Epic: task-center
@@ -197,29 +197,37 @@ task_executions: id, task_id, execution_time,
 4. 企业级特性和 SDK 开发 (2-3 周)
 5. 集成测试和部署验证 (2 周)
 
-## Tasks Created (基于 go-zero 开发规范重新分解)
+## Tasks Created Summary
 
 ### 协议定义层 (必须优先执行)
-- [ ] 001.md - API 协议文件设计和定义 (parallel: false, 2-3天)
-- [ ] 002.md - 数据库 DDL 设计和模型定义 (parallel: false, 2-3天)
+- [ ] #2 - API 协议文件设计和定义 (parallel: false)
+- [ ] #3 - 数据库 DDL 设计和模型定义 (parallel: false)
 
 ### 代码生成层 (依赖协议定义)
-- [ ] 003.md - 使用 goctl 生成项目结构 (parallel: false, 1天)
-- [ ] 004.md - 使用 goctl 生成数据模型代码 (parallel: false, 1天)
+- [ ] #4 - 使用 goctl 生成项目结构 (parallel: false)
+- [ ] #5 - 使用 goctl 生成数据模型代码 (parallel: false)
 
 ### 基础功能层 (依赖代码生成，内部并行)
-- [ ] 005.md - 业务系统认证授权实现 (parallel: true, 3-4天)
-- [ ] 006.md - Asynq 任务调度引擎集成 (parallel: true, 4-5天)
-- [ ] 007.md - HTTP 回调执行系统实现 (parallel: true, 3-4天)
+- [ ] #6 - 业务系统认证授权实现 (parallel: true)
+- [ ] #7 - Asynq 任务调度引擎集成 (parallel: true)
+- [ ] #8 - HTTP 回调执行系统实现 (parallel: true)
 
 ### 企业级特性层 (依赖基础功能，内部并行)
-- [ ] 008.md - 限流熔断保护机制实现 (parallel: true, 3天)
-- [ ] 009.md - 监控告警系统集成 (parallel: true, 4-5天)
-- [ ] 010.md - Go SDK 客户端开发 (parallel: true, 5-6天)
+- [ ] #9 - go-zero 保护机制配置和业务级限流实现 (parallel: true)
+- [ ] #10 - 监控告警系统集成 (parallel: true)
+- [ ] #11 - Go SDK 客户端开发 (parallel: true)
 
 ### 部署验收层 (依赖所有前置任务)
-- [ ] 011.md - 部署集成和端到端测试 (parallel: false, 8-10天)
+- [ ] #12 - 部署集成和端到端测试 (parallel: false)
 
+## 任务统计总结 (GitHub 同步后)
+- **总任务数**: 11
+- **协议优先**: 2个协议定义任务必须优先完成
+- **工具生成**: 2个 goctl 代码生成任务按序执行
+- **并行任务**: 6个功能开发任务可并行执行
+- **顺序任务**: 5个任务必须按序执行（协议→生成→测试）
+- **估计总工作量**: 280-356 小时 (优化后减少 8 小时)
+- **关键路径长度**: 约 20-25 工作日（严格遵循 go-zero 开发流程）
 ## 任务统计总结 (基于 go-zero 规范)
 - **总任务数**: 11
 - **协议优先**: 2个协议定义任务必须优先完成
@@ -232,26 +240,34 @@ task_executions: id, task_id, execution_time,
 ## Tasks Created Summary
 
 ### 协议定义层 (必须优先执行)
-- [x] 001.md - API 协议文件设计和定义 (parallel: false, 16-24h)
-- [x] 002.md - 数据库 DDL 设计和模型定义 (parallel: false, 16-20h)
+- [ ] #2 - API 协议文件设计和定义 (parallel: false)
+- [ ] #3 - 数据库 DDL 设计和模型定义 (parallel: false)
 
 ### 代码生成层 (依赖协议定义)
-- [x] 003.md - 使用 goctl 生成项目结构 (parallel: false, 8h)
-- [x] 004.md - 使用 goctl 生成数据模型代码 (parallel: false, 8h)
+- [ ] #4 - 使用 goctl 生成项目结构 (parallel: false)
+- [ ] #5 - 使用 goctl 生成数据模型代码 (parallel: false)
 
 ### 基础功能层 (依赖代码生成，内部并行)
-- [x] 005.md - 业务系统认证授权实现 (parallel: true, 24-32h)
-- [x] 006.md - Asynq 任务调度引擎集成 (parallel: true, 32-40h)
-- [x] 007.md - HTTP 回调执行系统实现 (parallel: true, 24-32h)
+- [ ] #6 - 业务系统认证授权实现 (parallel: true)
+- [ ] #7 - Asynq 任务调度引擎集成 (parallel: true)
+- [ ] #8 - HTTP 回调执行系统实现 (parallel: true)
 
 ### 企业级特性层 (依赖基础功能，内部并行)
-- [x] 008.md - go-zero 保护机制配置和业务级限流实现 (parallel: true, 16h)
-- [x] 009.md - 监控告警系统集成 (parallel: true, 32-40h)
-- [x] 010.md - Go SDK 客户端开发 (parallel: true, 40-48h)
+- [ ] #9 - go-zero 保护机制配置和业务级限流实现 (parallel: true)
+- [ ] #10 - 监控告警系统集成 (parallel: true)
+- [ ] #11 - Go SDK 客户端开发 (parallel: true)
 
 ### 部署验收层 (依赖所有前置任务)
-- [x] 011.md - 部署集成和端到端测试 (parallel: false, 64-80h)
+- [ ] #12 - 部署集成和端到端测试 (parallel: false)
 
+## 任务统计总结 (GitHub 同步后)
+- **总任务数**: 11
+- **协议优先**: 2个协议定义任务必须优先完成
+- **工具生成**: 2个 goctl 代码生成任务按序执行
+- **并行任务**: 6个功能开发任务可并行执行
+- **顺序任务**: 5个任务必须按序执行（协议→生成→测试）
+- **估计总工作量**: 280-356 小时 (优化后减少 8 小时)
+- **关键路径长度**: 约 20-25 工作日（严格遵循 go-zero 开发流程）
 ## 任务统计总结 (实际分解结果)
 - **总任务数**: 11
 - **协议优先**: 2个协议定义任务必须优先完成
