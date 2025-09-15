@@ -12,13 +12,15 @@ status: completed
 ## Scope
 设计 business_systems 表（业务系统管理）、tasks 表（任务主表）、task_executions 表（执行历史），定义基础字段类型和约束。
 
-## Files
-- `database/schema/core_tables.sql` (已完成)
-- `database/schema/init.sql` (已完成)
-- `database/README.md` (已完成)
+## Files (实际实现)
+- `database/migrations/000001_create_business_systems_table.up.sql` (已完成)
+- `database/migrations/000002_create_tasks_table.up.sql` (已完成)
+- `database/migrations/000003_create_task_executions_table.up.sql` (已完成)
+- `database/migrations/000004_create_task_locks_table.up.sql` (已完成)
+- `database/core_tables_no_fk.sql` - goctl 模型生成专用版本 (已完成)
 
-## Progress
-- ✅ 创建数据库目录结构 `database/schema/`
+## Progress (采用 golang-migrate 实现)
+- ✅ 创建 golang-migrate 目录结构 `database/migrations/`
 - ✅ 设计 business_systems 表
   - 包含 id, business_code, business_name 等基础字段
   - 添加 api_key, api_secret 认证字段
@@ -72,13 +74,22 @@ status: completed
 - 支持 JSON 格式的扩展字段
 - 分区策略建议，支持大数据量场景
 
-### 文件结构
+### 文件结构 (golang-migrate 标准)
 ```
 database/
-├── schema/
-│   ├── init.sql           # 数据库初始化脚本
-│   └── core_tables.sql    # 核心表结构定义
-└── README.md             # 数据库设计文档
+├── migrations/
+│   ├── 000001_create_business_systems_table.up.sql
+│   ├── 000001_create_business_systems_table.down.sql
+│   ├── 000002_create_tasks_table.up.sql
+│   ├── 000002_create_tasks_table.down.sql
+│   ├── 000003_create_task_executions_table.up.sql
+│   ├── 000003_create_task_executions_table.down.sql
+│   ├── 000004_create_task_locks_table.up.sql
+│   └── 000004_create_task_locks_table.down.sql
+├── migrate.sh              # golang-migrate 管理脚本
+├── integration.go          # Go 代码集成接口
+├── core_tables_no_fk.sql   # goctl 模型生成专用
+└── README_GOLANG_MIGRATE.md # golang-migrate 文档
 ```
 
 所有表结构已经过仔细设计，确保满足任务调度中心的业务需求，并为后续的模型生成和服务开发提供了坚实的数据基础。

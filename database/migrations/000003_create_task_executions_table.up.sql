@@ -1,0 +1,22 @@
+CREATE TABLE task_executions (
+  id bigint(20) NOT NULL AUTO_INCREMENT,
+  task_id bigint(20) NOT NULL,
+  execution_sequence int(11) NOT NULL,
+  execution_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  duration int(11) DEFAULT NULL,
+  http_status int(11) DEFAULT NULL,
+  response_headers text,
+  response_data text,
+  error_message text,
+  retry_after timestamp NULL DEFAULT NULL,
+  execution_node varchar(64) DEFAULT NULL,
+  trace_id varchar(128) DEFAULT NULL,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_task_id (task_id),
+  KEY idx_execution_time (execution_time),
+  KEY idx_task_sequence (task_id, execution_sequence),
+  KEY idx_http_status (http_status),
+  KEY idx_trace_id (trace_id),
+  CONSTRAINT fk_executions_task_id FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
