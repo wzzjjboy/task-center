@@ -199,6 +199,11 @@ func (c *Client) calculateRetryInterval(attempt int) time.Duration {
 	return interval
 }
 
+// DoRequest 公开的HTTP请求方法，供其他包使用
+func (c *Client) DoRequest(ctx context.Context, method, path string, body interface{}) (*http.Response, error) {
+	return c.doRequest(ctx, method, path, body)
+}
+
 // Close 关闭客户端，清理资源
 func (c *Client) Close() error {
 	// 这里可以添加清理逻辑，比如关闭连接池等
